@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CheckBoxDemo</string>
+    <string name="check">check</string>
+    <string name="uncheck">uncheck</string>
+    <string name="hint">records:</string>
+    <string name="submit">what\'s in list</string>
+</resources>
