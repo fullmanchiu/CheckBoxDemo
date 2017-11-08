@@ -2,7 +2,6 @@ package cn.colafans.checkboxdemo;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,7 +15,8 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
 
     private CheckBox cbMovie, cbMusic;
     private TextView textView;
-    private Button btnSubmit, btnCheckMovie, btnUncheckMovie, btnCheckMusic, btnUncheckMusic;
+    private Button btnSubmit, btnCheckMovie, btnUncheckMovie, btnPerformMovie,
+            btnCheckMusic, btnUncheckMusic, btnPerformMusic;
     private List<String> list;
 
     @Override
@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         setContentView(R.layout.activity_main);
         initViews();
         initListeners();
-        list = new ArrayList<String>();
+        list = new ArrayList<>();
     }
 
     private void initListeners() {
@@ -36,6 +36,8 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         btnCheckMusic.setOnClickListener(this);
         btnUncheckMovie.setOnClickListener(this);
         btnUncheckMusic.setOnClickListener(this);
+        btnPerformMovie.setOnClickListener(this);
+        btnPerformMusic.setOnClickListener(this);
     }
 
     private void initViews() {
@@ -47,19 +49,23 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         btnCheckMusic = findViewById(R.id.btn_music_check);
         btnUncheckMovie = findViewById(R.id.btn_movie_uncheck);
         btnUncheckMusic = findViewById(R.id.btn_music_uncheck);
+        btnPerformMovie = findViewById(R.id.btn_movie_perform);
+        btnPerformMusic = findViewById(R.id.btn_music_perform);
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
         if (textView.getText().toString().startsWith("w")) {
-            textView.setText("");
+            textView.setText(""); //不用管这个
         }
-        if (b) {
+        if (isChecked) {
+            //这里是checkbox 被选中的时候会执行的代码
             list.add(compoundButton.getText().toString());
-            textView.setText(textView.getText().toString() + " " + compoundButton.getText() + " has been checked \n");
+            textView.setText(getString(R.string.checked, textView.getText().toString(), compoundButton.getText()));
         } else {
+            //这里是checkbox 被取消选中的时候会执行的代码
             list.remove(compoundButton.getText().toString());
-            textView.setText(textView.getText().toString() + " " + compoundButton.getText() + " has been unchecked \n");
+            textView.setText(getString(R.string.unchecked, textView.getText().toString(), compoundButton.getText()));
         }
     }
 
@@ -67,21 +73,29 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_submit:
-                textView.setText("what is in list:" + list.toString());
+                //点击button，把list中的内容打出来
+                //textView.setText(getString(R.string.wil) + list.toString());
+                textView.setText(getString(R.string.wil, list.toString()));
                 break;
+            //下面setChecked(isChecked),performClick()     可以主动设置CheckBox的选中状态，这里以点击button为例
+            //同时也会走onCheckedChanged这个回调
             case R.id.btn_movie_check:
-                Log.i("lancelot","111111");
                 cbMovie.setChecked(true);
                 break;
             case R.id.btn_movie_uncheck:
-                Log.i("lancelot","22222");
                 cbMovie.setChecked(false);
+                break;
+            case R.id.btn_movie_perform:
+                cbMovie.performClick();
                 break;
             case R.id.btn_music_check:
                 cbMusic.setChecked(true);
                 break;
             case R.id.btn_music_uncheck:
                 cbMusic.setChecked(false);
+                break;
+            case R.id.btn_music_perform:
+                cbMusic.performClick();
                 break;
             default:
                 //nothing todo

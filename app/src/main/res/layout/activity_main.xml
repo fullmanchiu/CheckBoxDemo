@@ -17,19 +17,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Movie" />
+                android:text="@string/movie_text" />
 
             <Button
                 android:id="@+id/btn_movie_check"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/check" />
 
             <Button
                 android:id="@+id/btn_movie_uncheck"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/uncheck" />
+
+            <Button
+                android:id="@+id/btn_movie_perform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/perform" />
         </TableRow>
 
         <TableRow>
@@ -39,19 +45,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Music" />
+                android:text="@string/music_text" />
 
             <Button
                 android:id="@+id/btn_music_check"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/check" />
 
             <Button
                 android:id="@+id/btn_music_uncheck"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/uncheck" />
+
+            <Button
+                android:id="@+id/btn_music_perform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/perform" />
 
         </TableRow>
 

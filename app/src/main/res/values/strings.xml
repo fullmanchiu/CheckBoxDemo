@@ -3,5 +3,11 @@
     <string name="check">check</string>
     <string name="uncheck">uncheck</string>
     <string name="hint">records:</string>
-    <string name="submit">what\'s in list</string>
+    <string name="submit">dump list</string>
+    <string name="perform">perform</string>
+    <string name="movie_text">movie</string>
+    <string name="music_text">Music</string>
+    <string name="wil">dump list: %1$s</string>
+    <string name="checked">%1$s %2$s has been checked \n</string>
+    <string name="unchecked">%1$s %2$s has been unchecked \n</string>
 </resources>
